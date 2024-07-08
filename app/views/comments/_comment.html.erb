@@ -1,4 +1,4 @@
-<li class="list-group-item">
+<li id="<%= dom_id(comment) %>" class="list-group-item">
   <div class="d-flex">
     <div class="flex-shrink-0">
       <%= image_tag comment.author.avatar_image, class: "rounded-circle mr-2", width: 36 %>
@@ -15,9 +15,25 @@
           <i class="fas fa-edit fa-fw"></i>
         <% end %>
 
-        <%= link_to comment, data: { turbo_method: :delete }, class: "btn btn-link btn-sm text-muted" do %>
+        <%= link_to comment, 
+          method: :delete, 
+          class: "btn btn-link btn-sm text-muted",
+          remote: true do %>
           <i class="fas fa-trash fa-fw"></i>
         <% end %>
+        <script>
+          // bind the click handler
+            $("#comment_<%= comment.id %>_delete_link").on("click", function() {
+
+              $.ajax({
+                url: "/comments/<%= comment.id %>", // what URL to submit a request to
+                type: "DELETE",                     // make it a DELETE request
+                dataType: "script"                  // what is the format of the request
+              });
+
+              return false;                         // break the link
+            });
+        </script>
       <% end %>
     </div>
   </div>
