@@ -20,22 +20,10 @@
           class: "btn btn-link btn-sm text-muted",
           remote: true do %>
           <i class="fas fa-trash fa-fw"></i>
-          <script>
-            // bind the click handler
-              $("#comment_<%= comment.id %>_delete_link").on("click", function() {
 
-                $.ajax({
-                  url: "/comments/<%= comment.id %>", // what URL to submit a request to
-                  type: "DELETE",                     // make it a DELETE request
-                  dataType: "script"                  // what is the format of the request
-                });
-
-                return false;                         // break the link
-              });
-          </script>
         <% end %>
-
       <% end %>
     </div>
   </div>
+
 </li>

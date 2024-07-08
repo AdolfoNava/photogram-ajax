@@ -60,7 +60,7 @@ class CommentsController < ApplicationController
       format.html { redirect_back fallback_location: root_url, notice: "Comment was successfully destroyed." }
       format.json { head :no_content }
       format.js do
-        render "comments/destroy"
+        render template: "comments/destroy"
       end
     end
   end

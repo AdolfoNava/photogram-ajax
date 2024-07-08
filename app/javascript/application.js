@@ -5,5 +5,6 @@ import "controllers"
 import jquery from "jquery";
 window.jQuery = jquery;
 window.$ = jquery;
+console.log('jQuery version:', $.fn.jquery);  // Check if jQuery is loaded
 import Rails from "@rails/ujs"
 Rails.start();
